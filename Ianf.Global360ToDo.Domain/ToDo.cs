@@ -1,0 +1,12 @@
+﻿using Ianf.Global360ToDo.Domain.Enums;
+
+namespace Ianf.Global360ToDo.Domain;
+
+public readonly record struct ToDo
+{
+    public ToDo() { }
+    public string Title { get; init; } = string.Empty;
+    public string Contents { get; init; } = string.Empty;
+    public Priority Priority { get; init; } = Priority.Medium;
+    public DateTime CompletionDate { get; init; } = DateTime.MaxValue;
+}
