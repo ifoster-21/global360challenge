@@ -104,4 +104,14 @@ public class InMemoryToDoRepositoryTests
         var todoList = await _sut.GetToDos();
         Assert.Equal(2, todoList.ToList().Count);
     }
+
+    [Fact]
+    public async Task TestRemoveToDoWithNonExistentToDoId()
+    {
+        // Assemble
+
+        // Act
+
+        // Assert
+    }
 }
