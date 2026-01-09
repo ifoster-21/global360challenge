@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Ianf.Global360ToDo.Services;
 using Ianf.Global360ToDo.Domain;
+using Ianf.Global360ToDo.Domain.Exceptions;
 
 namespace Ianf.Global360ToDo.WebAPI.Controllers;
 
@@ -27,15 +28,37 @@ public class ToDoController : ControllerBase
 
     [HttpPost]
     [Route("/ToDoItems")]
-    public async Task<ToDoId> AddNewToDoItem(NewToDo newToDo)
+    public async Task<ActionResult<ToDoId>> AddNewToDoItem(NewToDo newToDo)
     {
-        return await _service.AddToDoItem(newToDo);
+        try
+        {
+            return await _service.AddToDoItem(newToDo);
+        }
+        catch (InvalidToDoTitleException ex)
+        {
+            _logger.LogError(ex.Message);
+            return BadRequest(ex.Message);
+        }
+        catch (InvalidToDoContentsException ex)
+        {
+            _logger.LogError(ex.Message);
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpDelete]
-    [Route("/ToDoItems")]
-    public async Task<ToDoId> RemoveToDoItem(ToDoId toDoId)
+    [Route("/ToDoItems/{toDoId}")]
+    public async Task<IActionResult> RemoveToDoItem(int toDoId)
     {
-        return await _service.RemoveToDoItem(toDoId);
+        try
+        {
+            var idToDelete = new ToDoId(toDoId);
+            await _service.RemoveToDoItem(idToDelete);
+        }
+        catch (InvalidToDoIdException)
+        {
+            return BadRequest($"Id {toDoId} is not a valid id for a ToDoItem.");
+        }
+        return Ok();
     }
 }

@@ -11,9 +11,47 @@ public class WebApiTests
     [Fact]
     public async Task TestEndToEndAddRemoveAndRetrieveToDoItems()
     {
+        // Get current todo items. Should be empty.
         var toDoItems = await GetToDoItems();
-        var latestItemId = toDoItems.Count;
-        await AddNewToDoItems(latestItemId);
+        Assert.Empty(toDoItems);
+
+        // Add two new items and store returned item ids.
+        var newToDoId1 = await AddNewToDoItem("Test Title 1", "Test Contents 1");
+        var newToDoId2 = await AddNewToDoItem("Test Title 2", "Test Contents 2");
+
+        // Get current todo items and confirm two exist.
+        toDoItems = await GetToDoItems();
+        Assert.Equal(2, toDoItems.Count);
+
+        // Remove one item.
+        await RemoveToDoItem(newToDoId1);
+
+        // Get current todo items and confirm only one exists.
+        toDoItems = await GetToDoItems();
+        Assert.Single(toDoItems);
+    }
+
+    [Fact]
+    public async Task TestAddInvalidToDoItem()
+    {
+        // Assemble
+        var urlTarget = $"{urlEndpoint}ToDoItems";
+        using var client = new HttpClient();
+        client.BaseAddress = urlEndpoint;
+        var newToDoItem = new NewToDo
+        {
+            Title = string.Empty,
+            Contents = "Test Contents",
+            Priority = Domain.Enums.Priority.High,
+            CompletionDate = DateTime.Now.AddDays(1)
+        };
+        var newToDoItemString = new StringContent(JsonConvert.SerializeObject(newToDoItem), System.Text.Encoding.UTF8, "application/json");
+
+        // Act
+        var response = await client.PostAsync(urlTarget, newToDoItemString);
+
+        // Assert
+        Assert.Equal(System.Net.HttpStatusCode.BadRequest, response.StatusCode);
     }
 
     private async Task<List<ToDo>> GetToDoItems()
@@ -35,7 +73,7 @@ public class WebApiTests
         return toDoItems;
     }
 
-    private async Task AddNewToDoItems(int latestItemId)
+    private async Task<ToDoId> AddNewToDoItem(string title, string contents)
     {
         // Assemble
         var urlTarget = $"{urlEndpoint}ToDoItems";
@@ -43,10 +81,10 @@ public class WebApiTests
         client.BaseAddress = urlEndpoint;
         var newToDoItem = new NewToDo
         {
-            Title = "Test Title",
-            Contents = "Test Contents",
+            Title = title,
+            Contents = contents,
             Priority = Domain.Enums.Priority.High,
-            CompletionDate = DateTime.Now
+            CompletionDate = DateTime.Now.AddDays(1)
         };
         var newToDoItemString = new StringContent(JsonConvert.SerializeObject(newToDoItem), System.Text.Encoding.UTF8, "application/json");
 
@@ -57,6 +95,20 @@ public class WebApiTests
 
         // Assert
         response.EnsureSuccessStatusCode();
-        Assert.Equal(latestItemId + 1, newToDoId.Id);
+        return newToDoId;
+    }
+
+    private async Task RemoveToDoItem(ToDoId toDoId)
+    {
+        // Assemble
+        var urlTarget = $"{urlEndpoint}ToDoItems/{toDoId.Id}";
+        using var client = new HttpClient();
+        client.BaseAddress = urlEndpoint;
+
+        // Act
+        var response = await client.DeleteAsync(urlTarget);
+
+        // Assert
+        response.EnsureSuccessStatusCode();
     }
 }
