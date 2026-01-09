@@ -1,0 +1,6 @@
+@Ianf.Global360ToDo.WebAPI_HostAddress = http://localhost:5124
+
+GET {{Ianf.Global360ToDo.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

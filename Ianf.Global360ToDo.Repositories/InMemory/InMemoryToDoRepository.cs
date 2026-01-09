@@ -22,7 +22,7 @@ public class InMemoryToDoRepository : IToDoRepository
         return Task.FromResult(newToDoId);
     }
 
-    public Task<IEnumerable<ToDo>> GetToDoItems() => Task.FromResult(_todoItems.AsEnumerable());
+    public Task<List<ToDo>> GetToDoItems() => Task.FromResult(_todoItems);
 
     public Task<ToDoId> RemoveToDoItem(ToDoId toDoId)
     {
