@@ -11,7 +11,6 @@ public class InMemoryToDoRepository : IToDoRepository
     public Task<ToDoId> AddToDoItem(NewToDo newToDo)
     {
         var newToDoId = GenerateNewToDoId();
-        Console.WriteLine(newToDoId);
         _todoItems.Add(new ToDo
         {
             Id = newToDoId,

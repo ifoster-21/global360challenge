@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddTransient<IToDoRepository, InMemoryToDoRepository>();
+builder.Services.AddSingleton<IToDoRepository, InMemoryToDoRepository>();
 builder.Services.AddTransient<IToDoService, ToDoService>();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

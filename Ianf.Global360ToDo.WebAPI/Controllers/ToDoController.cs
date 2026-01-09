@@ -19,21 +19,21 @@ public class ToDoController : ControllerBase
     }
 
     [HttpGet]
-    [Route("/ToDo")]
+    [Route("/ToDoItems")]
     public async Task<List<ToDo>> GetToDoItems()
     {
         return await _service.GetToDoItems();
     }
 
     [HttpPost]
-    [Route("/ToDo")]
+    [Route("/ToDoItems")]
     public async Task<ToDoId> AddNewToDoItem(NewToDo newToDo)
     {
         return await _service.AddToDoItem(newToDo);
     }
 
     [HttpDelete]
-    [Route("/ToDo")]
+    [Route("/ToDoItems")]
     public async Task<ToDoId> RemoveToDoItem(ToDoId toDoId)
     {
         return await _service.RemoveToDoItem(toDoId);
