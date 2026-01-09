@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ianf.Global360ToDo.Repositories\Ianf.Global360ToDo.Repositories.csproj" />
+    <ProjectReference Include="..\Ianf.Global360ToDo.Domain\Ianf.Global360ToDo.Domain.csproj" />
   </ItemGroup>
 
 </Project>
