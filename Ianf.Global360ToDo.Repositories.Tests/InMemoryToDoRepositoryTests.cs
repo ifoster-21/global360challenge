@@ -1,5 +1,6 @@
 ﻿using Ianf.Global360ToDo.Domain;
 using Ianf.Global360ToDo.Repositories.InMemory;
+using Xunit.Sdk;
 
 namespace Ianf.Global360ToDo.Repositories.Tests;
 
@@ -68,5 +69,39 @@ public class InMemoryToDoRepositoryTests
         // Assert
         var todoList = await _sut.GetToDos();
         Assert.Equal(3, todoList.ToList().Count);
+    }
+
+    [Fact]
+    public async Task TestRemoveToDoItem()
+    {
+        // Assemble
+        var newToDo1 = new NewToDo
+        {
+            Title = "Title 1",
+            Contents = "Contents 1",
+            Priority = Domain.Enums.Priority.High
+        };
+        var newToDo2 = new NewToDo
+        {
+            Title = "Title 2",
+            Contents = "Contents 2",
+            Priority = Domain.Enums.Priority.Medium
+        };
+        var newToDo3 = new NewToDo
+        {
+            Title = "Title 3",
+            Contents = "Contents 3",
+            Priority = Domain.Enums.Priority.Low
+        };
+        await _sut.AddToDoItem(newToDo1);
+        var newToDoId = await _sut.AddToDoItem(newToDo2);
+        await _sut.AddToDoItem(newToDo3);
+
+        // Act
+        await _sut.RemoveToDoItem(newToDoId);
+
+        // Assert
+        var todoList = await _sut.GetToDos();
+        Assert.Equal(2, todoList.ToList().Count);
     }
 }
