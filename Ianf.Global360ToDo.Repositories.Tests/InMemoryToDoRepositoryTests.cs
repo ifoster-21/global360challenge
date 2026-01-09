@@ -36,4 +36,37 @@ public class InMemoryToDoRepositoryTests
         Assert.Equal(contents, todo.Contents);
         Assert.Equal(priority, todo.Priority);
     }
+
+    [Fact]
+    public async Task TestGetAllToDoItems()
+    {
+        // Assemble
+        var newToDo1 = new NewToDo
+        {
+            Title = "Title 1",
+            Contents = "Contents 1",
+            Priority = Domain.Enums.Priority.High
+        };
+        var newToDo2 = new NewToDo
+        {
+            Title = "Title 2",
+            Contents = "Contents 2",
+            Priority = Domain.Enums.Priority.Medium
+        };
+        var newToDo3 = new NewToDo
+        {
+            Title = "Title 3",
+            Contents = "Contents 3",
+            Priority = Domain.Enums.Priority.Low
+        };
+
+        // Act
+        await _sut.AddToDoItem(newToDo1);
+        await _sut.AddToDoItem(newToDo2);
+        await _sut.AddToDoItem(newToDo3);
+
+        // Assert
+        var todoList = await _sut.GetToDos();
+        Assert.Equal(3, todoList.ToList().Count);
+    }
 }
