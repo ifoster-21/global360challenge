@@ -31,6 +31,7 @@ public class WebApiTests
 
         // Assert
         Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
+        Assert.NotNull(toDoItems);
         return toDoItems;
     }
 
