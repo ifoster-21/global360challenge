@@ -22,14 +22,14 @@ public class InMemoryToDoRepositoryTests
             Contents = contents,
             Priority = priority
         };
-        var todoList = await _sut.GetToDos();
+        var todoList = await _sut.GetToDoItems();
         Assert.Empty(todoList.ToList());
 
         // Act
         await _sut.AddToDoItem(newToDo);
 
         // Assert
-        todoList = await _sut.GetToDos();
+        todoList = await _sut.GetToDoItems();
         Assert.Single(todoList.ToList());
         var todo = todoList.ToList().First();
         Assert.Equal(1, todo.Id.Id);
@@ -67,7 +67,7 @@ public class InMemoryToDoRepositoryTests
         await _sut.AddToDoItem(newToDo3);
 
         // Assert
-        var todoList = await _sut.GetToDos();
+        var todoList = await _sut.GetToDoItems();
         Assert.Equal(3, todoList.ToList().Count);
     }
 
@@ -101,7 +101,7 @@ public class InMemoryToDoRepositoryTests
         await _sut.RemoveToDoItem(newToDoId);
 
         // Assert
-        var todoList = await _sut.GetToDos();
+        var todoList = await _sut.GetToDoItems();
         Assert.Equal(2, todoList.ToList().Count);
     }
 
@@ -137,7 +137,7 @@ public class InMemoryToDoRepositoryTests
         Console.WriteLine(result);
 
         // Assert
-        var todoList = await _sut.GetToDos();
+        var todoList = await _sut.GetToDoItems();
         Assert.Equal(3, todoList.ToList().Count);
     }
 }

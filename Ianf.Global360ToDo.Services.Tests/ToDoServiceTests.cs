@@ -67,4 +67,9 @@ public class ToDoServiceTests
         // Assert
         Assert.Equal(new ToDoId(1), result);
     }
+
+    /**
+     * No test cases for service-level RemoveToDoItem or GetToDoItems as this is a direct wrapper around the underlying
+     * repository layer with no additional business logic to test.
+     */
 }

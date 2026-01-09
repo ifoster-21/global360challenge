@@ -6,5 +6,5 @@ public interface IToDoRepository
 {
     public Task<ToDoId> AddToDoItem(NewToDo toDo);
     public Task<ToDoId> RemoveToDoItem(ToDoId toDoId);
-    public Task<IEnumerable<ToDo>> GetToDos();
+    public Task<IEnumerable<ToDo>> GetToDoItems();
 }
