@@ -11,14 +11,12 @@ public class InMemoryToDoRepositoryTests
     public async Task TestAddNewToDoItem()
     {
         // Assemble
-        var id = new ToDoId(42);
         var title = "Test ToDo Title";
         var contents = "Contents of todo item.";
         var priority = Domain.Enums.Priority.High;
 
-        var newToDo = new ToDo
+        var newToDo = new NewToDo
         {
-            Id = id,
             Title = title,
             Contents = contents,
             Priority = priority
@@ -33,7 +31,7 @@ public class InMemoryToDoRepositoryTests
         todoList = await _sut.GetToDos();
         Assert.Single(todoList.ToList());
         var todo = todoList.ToList().First();
-        Assert.Equal(id, todo.Id);
+        Assert.Equal(1, todo.Id.Id);
         Assert.Equal(title, todo.Title);
         Assert.Equal(contents, todo.Contents);
         Assert.Equal(priority, todo.Priority);

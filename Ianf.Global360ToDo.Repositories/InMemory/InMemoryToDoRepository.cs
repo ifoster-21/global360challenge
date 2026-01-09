@@ -4,17 +4,31 @@ namespace Ianf.Global360ToDo.Repositories.InMemory;
 
 public class InMemoryToDoRepository : IToDoRepository
 {
-    public Task<ToDoId> AddToDoItem(ToDo toDo)
+    private readonly List<ToDo> _todoItems = [];
+
+    private ToDoId GenerateNewToDoId()
     {
-        throw new NotImplementedException();
+        var todoCount = _todoItems.Count;
+        return new ToDoId(todoCount + 1);
     }
 
-    public Task<IEnumerable<ToDo>> GetToDos()
+    public Task<ToDoId> AddToDoItem(NewToDo newToDo)
     {
-        throw new NotImplementedException();
+        var newToDoId = GenerateNewToDoId();
+        var toDo = new ToDo
+        {
+            Id = newToDoId,
+            Title = newToDo.Title,
+            Contents = newToDo.Contents,
+            Priority = newToDo.Priority
+        };
+        _todoItems.Add(toDo);
+        return Task.FromResult(newToDoId);
     }
 
-    public Task RemoveToDoItem(int toDoId)
+    public Task<IEnumerable<ToDo>> GetToDos() => Task.FromResult(_todoItems.AsEnumerable());
+
+    public Task RemoveToDoItem(ToDoId toDoId)
     {
         throw new NotImplementedException();
     }
