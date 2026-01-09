@@ -11,6 +11,7 @@ public class InMemoryToDoRepository : IToDoRepository
     public Task<ToDoId> AddToDoItem(NewToDo newToDo)
     {
         var newToDoId = GenerateNewToDoId();
+        Console.WriteLine(newToDoId);
         _todoItems.Add(new ToDo
         {
             Id = newToDoId,
@@ -25,7 +26,7 @@ public class InMemoryToDoRepository : IToDoRepository
 
     public Task<ToDoId> RemoveToDoItem(ToDoId toDoId)
     {
-        if(_todoItems.Exists(item => item.Id == toDoId))
+        if (_todoItems.Exists(item => item.Id == toDoId))
         {
             var itemToRemove = _todoItems.First(item => item.Id == toDoId);
             var result = _todoItems.Remove(itemToRemove);

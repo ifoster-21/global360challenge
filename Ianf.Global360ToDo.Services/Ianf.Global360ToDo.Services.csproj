@@ -1,5 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\Ianf.Global360ToDo.Domain\Ianf.Global360ToDo.Domain.csproj" />
+    <ProjectReference Include="..\Ianf.Global360ToDo.Repositories\Ianf.Global360ToDo.Repositories.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
