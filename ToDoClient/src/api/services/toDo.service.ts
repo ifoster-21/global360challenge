@@ -12,17 +12,16 @@ export class ToDoService {
     constructor(private http: HttpClient) {
     }
 
-    toDoItemsGet = async () => {
+    toDoItemsGet () {
         // TODO: Workout out how to handle errors in latest angular pattern.
-        this.http.get<ToDo[]>(`${this.BASE_PATH_DEFAULT}ToDoItems`).subscribe((result) => {
-            this.toDoList = result;
-        });
+        return this.http.get<ToDo[]>(`${this.BASE_PATH_DEFAULT}ToDoItems`);//.subscribe((result) => {
+        //    this.toDoList = result;
+        //});
     };
 
     toDoItemDelete = async (toDoId: number) => {
         // TODO: Workout out how to handle errors in latest angular pattern.
         this.http.delete(`${this.BASE_PATH_DEFAULT}ToDoItems/${toDoId}`).subscribe((result) => {
-            console.log(JSON.stringify(result));
             this.selectedToDo = undefined;
         });
     };
