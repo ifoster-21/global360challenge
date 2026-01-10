@@ -1,5 +1,5 @@
 <ul>
     @for(toDo of toDoList; track toDo.id) {
-        <li><app-to-do-component [toDo]="toDo" (deleteToDo)="handleDelete($event)" (displayToDo)="handleDisplay($event)" /></li>
+        <li><app-to-do-component [toDo]="toDo" (deleteToDo)="handleDelete($event)" /></li>
     }
 </ul>

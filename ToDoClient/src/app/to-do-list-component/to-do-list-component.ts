@@ -23,19 +23,12 @@ export class ToDoListComponent implements OnInit {
   }
 
   loadData() {
-    console.log("Calling loadData");
     this.toDoService.getToDoList().subscribe({
       next: (results) => {
-        console.log(`list of results is ${JSON.stringify(results)}`);
         this.toDoList = results;
       },
       error: (e) => console.error(e)
     });
-  }
-
-  handleDisplay(e:any) {
-    const redirectUrl = `DisplayToDo/${e.id}`;
-    this.router.navigate([redirectUrl])
   }
 
   handleDelete(e:any) {

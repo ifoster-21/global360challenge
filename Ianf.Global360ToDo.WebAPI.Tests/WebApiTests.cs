@@ -12,30 +12,30 @@ public class WebApiTests
     [Fact]
     public async Task TestEndToEndAddRemoveAndRetrieveToDoItems()
     {
-        // Get current todo items. Should be empty.
+        // Get current todo items.
         var toDoItems = await GetToDoItems();
-        Assert.Empty(toDoItems);
+        var toDoCount = toDoItems.Count;
 
         // Add two new items and store returned item ids.
         var newToDoId1 = await AddNewToDoItem("Test Title 1", "Test Contents 1");
-        var newToDoId2 = await AddNewToDoItem("Test Title 2", "Test Contents 2");
+        await AddNewToDoItem("Test Title 2", "Test Contents 2");
         await AddNewToDoItem("Test Title 3", "Test Contents 3");
         await AddNewToDoItem("Test Title 4", "Test Contents 4");
         await AddNewToDoItem("Test Title 5", "Test Contents 5");
 
         // Get current todo items and confirm two exist.
         toDoItems = await GetToDoItems();
-        Assert.Equal(2, toDoItems.Count);
+        Assert.Equal(toDoCount + 5, toDoItems.Count);
 
         // Remove one item.
         await RemoveToDoItem(newToDoId1);
 
         // Get current todo items and confirm only one exists.
         toDoItems = await GetToDoItems();
-        //        Assert.Single(toDoItems);
+        Assert.Equal(toDoCount + 4, toDoItems.Count);
     }
 
-    [Fact(Skip = "")]
+    [Fact]
     public async Task TestAddInvalidToDoItem()
     {
         // Assemble

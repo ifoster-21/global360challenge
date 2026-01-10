@@ -11,12 +11,6 @@ import { DatePipe } from '@angular/common';
 export class ToDoComponent {
   toDo = input.required<ToDo>();
   deleteToDo = output<ToDo>();
-  displayToDo = output<ToDo>();
-
-  onDisplay(e:any) {
-    e.stopPropagation();
-    this.displayToDo.emit(this.toDo());
-  }
 
   onDelete(e:any) {
     e.stopPropagation();
