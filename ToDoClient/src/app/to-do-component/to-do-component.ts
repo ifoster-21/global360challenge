@@ -15,13 +15,11 @@ export class ToDoComponent {
 
   onDisplay(e:any) {
     e.stopPropagation();
-    console.log("Called onDisplay");
     this.displayToDo.emit(this.toDo());
   }
 
   onDelete(e:any) {
     e.stopPropagation();
-    console.log("Called onDelete");
     this.deleteToDo.emit(this.toDo());
   }
 }
