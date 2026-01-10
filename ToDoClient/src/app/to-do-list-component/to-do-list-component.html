@@ -1,1 +1,5 @@
-<p>to-do-list-component works!</p>
+<ul>
+    @for(toDo of toDoList; track toDo) {
+        <li><app-to-do-component [toDo]="toDo" /></li>
+    }
+</ul>

@@ -1,14 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToDoComponent } from './to-do-component';
 import { ToDo, Priority } from '../../api/models/index';
-import { inputBinding, signal } from '@angular/core';
+import { inputBinding, outputBinding, signal } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 describe('ToDoComponent', () => {
   let component: ToDoComponent;
   let fixture: ComponentFixture<ToDoComponent>;
   let testDate: Date = new Date(2029, 1, 5, 12, 0, 0);
-  const toDo: ToDo = {title: "Test Title", contents: "Test Contents", priority: 0, completionDate: testDate };
+
+  const toDo: ToDo = {id: {id:42}, title: "Test Title", contents: "Test Contents", priority: 0, completionDate: testDate };
 
   beforeEach(async () => {
     fixture = TestBed.createComponent(ToDoComponent, {
@@ -47,5 +48,11 @@ describe('ToDoComponent', () => {
     ).nativeElement;
 
     expect(body.textContent).toContain('February 5, 2029');
+  });
+
+  it('should handle the event thrown when clicking the "delete" button', () => {
+    component.deleteToDo.subscribe((toDo: ToDo) => {
+      expect(toDo.id?.id).toBe(42);
+    });
   });
 });

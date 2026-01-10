@@ -1,2 +1,5 @@
-<div class="todo-title" data-testid="todo-title">{{toDo().title}}</div>
-<div class="todo-completion-date" data-testid="todo-completion-date">{{toDo().completionDate | date:'longDate'}}</div>
+<div (click)="onDisplay($event)">
+    <div class="todo-title" data-testid="todo-title">{{toDo().title}}</div>
+    <div class="todo-completion-date" data-testid="todo-completion-date">{{toDo().completionDate | date:'longDate'}}</div>
+    <button class="todo-delete" data-testid="todo-delete" (click)="onDelete($event)">Delete To Do Item</button>
+</div>
