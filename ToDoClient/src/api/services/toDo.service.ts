@@ -21,10 +21,7 @@ export class ToDoService {
         return this.http.get<ToDo[]>(`${this.BASE_PATH_DEFAULT}ToDoItems`);
     };
 
-    deleteToDo(toDoId: number) {
-        this.http.delete(`${this.BASE_PATH_DEFAULT}ToDoItems/${toDoId}`).subscribe({
-            next: () => this.updateSubject.next(true),
-            error: (e) => console.error(e)
-        });
+    deleteToDo(toDoId: number): Observable<Object> {
+        return this.http.delete(`${this.BASE_PATH_DEFAULT}ToDoItems/${toDoId}`);
     };
 }
