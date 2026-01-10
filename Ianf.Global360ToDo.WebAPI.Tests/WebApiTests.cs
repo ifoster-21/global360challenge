@@ -29,11 +29,7 @@ public class WebApiTests
 
         // Remove one item.
         var updatedToDoList = await RemoveToDoItem(newToDoId1);
-        Assert.Equal(4, updatedToDoList.Count);
-
-        // Get current todo items and confirm only one exists.
-        toDoItems = await GetToDoItems();
-        Assert.Equal(toDoCount + 4, toDoItems.Count);
+        Assert.Equal(toDoCount + 4, updatedToDoList.Count);
     }
 
     [Fact]

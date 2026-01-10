@@ -1,10 +1,40 @@
 using Ianf.Global360ToDo.Domain;
+using Ianf.Global360ToDo.Domain.Enums;
 
 namespace Ianf.Global360ToDo.Repositories.InMemory;
 
 public class InMemoryToDoRepository : IToDoRepository
 {
-    private readonly List<ToDo> _todoItems = [];
+    private readonly List<ToDo> _todoItems = [
+        new ToDo {
+            Id = 1,
+            Title = "",
+            Contents = "",
+            Priority = Priority.High,
+            CompletionDate = DateTime.Now.AddDays(1)
+        },
+        new ToDo {
+            Id = 2,
+            Title = "",
+            Contents = "",
+            Priority = Priority.Medium,
+            CompletionDate = DateTime.Now.AddDays(1)
+        },
+        new ToDo {
+            Id = 3,
+            Title = "",
+            Contents = "",
+            Priority = Priority.High,
+            CompletionDate = DateTime.Now.AddDays(3)
+        },
+        new ToDo {
+            Id = 4,
+            Title = "",
+            Contents = "",
+            Priority = Priority.Low,
+            CompletionDate = DateTime.Now.AddDays(2)
+        }
+    ];
 
     private int GenerateNewToDoId() => _todoItems.Count + 1;
 
