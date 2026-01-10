@@ -4,7 +4,7 @@ namespace Ianf.Global360ToDo.Repositories;
 
 public interface IToDoRepository
 {
-    public Task<ToDoId> AddToDoItem(NewToDo toDo);
-    public Task<ToDoId> RemoveToDoItem(ToDoId toDoId);
+    public Task<int> AddToDoItem(NewToDo toDo);
+    public Task<int> RemoveToDoItem(int toDoId);
     public Task<List<ToDo>> GetToDoItems();
 }

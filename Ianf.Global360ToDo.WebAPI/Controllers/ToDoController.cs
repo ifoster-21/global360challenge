@@ -28,7 +28,7 @@ public class ToDoController : ControllerBase
 
     [HttpPost]
     [Route("/ToDoItems")]
-    public async Task<ActionResult<ToDoId>> AddNewToDoItem(NewToDo newToDo)
+    public async Task<ActionResult<int>> AddNewToDoItem(NewToDo newToDo)
     {
         try
         {
@@ -52,8 +52,7 @@ public class ToDoController : ControllerBase
     {
         try
         {
-            var idToDelete = new ToDoId(toDoId);
-            await _service.RemoveToDoItem(idToDelete);
+            await _service.RemoveToDoItem(toDoId);
         }
         catch (InvalidToDoIdException)
         {

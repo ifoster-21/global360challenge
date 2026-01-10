@@ -12,7 +12,7 @@ import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { BASE_PATH_DEFAULT, CLIENT_CONTEXT_TOKEN_DEFAULT } from "../tokens";
 import { HttpParamsBuilder } from "../utils/http-params-builder";
-import { RequestOptions, ToDo, NewToDo, ToDoId } from "../models";
+import { RequestOptions, ToDo, NewToDo } from "../models";
 
 @Injectable({ providedIn: "root" })
 export class ToDoService {
@@ -41,9 +41,9 @@ export class ToDoService {
         return this.httpClient.get(url, requestOptions);
     }
 
-    toDoItemsPost(newToDo: NewToDo, observe?: 'body', options?: RequestOptions<'json'>): Observable<ToDoId>;
-    toDoItemsPost(newToDo: NewToDo, observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<ToDoId>>;
-    toDoItemsPost(newToDo: NewToDo, observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<ToDoId>>;
+    toDoItemsPost(newToDo: NewToDo, observe?: 'body', options?: RequestOptions<'json'>): Observable<number | string>;
+    toDoItemsPost(newToDo: NewToDo, observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<number | string>>;
+    toDoItemsPost(newToDo: NewToDo, observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<number | string>>;
     toDoItemsPost(newToDo: NewToDo, observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
         const url = `${this.basePath}/ToDoItems`;
 

@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { ToDo, ToDoId } from '../../api/models';
+import { ToDo } from '../../api/models';
 import { DatePipe } from '@angular/common';
 
 @Component({

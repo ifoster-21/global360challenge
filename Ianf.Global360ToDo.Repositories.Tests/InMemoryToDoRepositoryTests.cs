@@ -32,7 +32,7 @@ public class InMemoryToDoRepositoryTests
         todoList = await _sut.GetToDoItems();
         Assert.Single(todoList.ToList());
         var todo = todoList.ToList().First();
-        Assert.Equal(1, todo.Id.Id);
+        Assert.Equal(1, todo.Id);
         Assert.Equal(title, todo.Title);
         Assert.Equal(contents, todo.Contents);
         Assert.Equal(priority, todo.Priority);
@@ -132,7 +132,7 @@ public class InMemoryToDoRepositoryTests
         await _sut.AddToDoItem(newToDo3);
 
         // Act
-        var nonExistantToDoId = new ToDoId(42);
+        var nonExistantToDoId = 42;
         var result = await _sut.RemoveToDoItem(nonExistantToDoId);
         Console.WriteLine(result);
 

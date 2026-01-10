@@ -6,9 +6,9 @@ public class InMemoryToDoRepository : IToDoRepository
 {
     private readonly List<ToDo> _todoItems = [];
 
-    private ToDoId GenerateNewToDoId() => new(_todoItems.Count + 1);
+    private int GenerateNewToDoId() => _todoItems.Count + 1;
 
-    public Task<ToDoId> AddToDoItem(NewToDo newToDo)
+    public Task<int> AddToDoItem(NewToDo newToDo)
     {
         var newToDoId = GenerateNewToDoId();
         _todoItems.Add(new ToDo
@@ -23,7 +23,7 @@ public class InMemoryToDoRepository : IToDoRepository
 
     public Task<List<ToDo>> GetToDoItems() => Task.FromResult(_todoItems);
 
-    public Task<ToDoId> RemoveToDoItem(ToDoId toDoId)
+    public Task<int> RemoveToDoItem(int toDoId)
     {
         if (_todoItems.Exists(item => item.Id == toDoId))
         {

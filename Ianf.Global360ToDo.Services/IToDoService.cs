@@ -4,7 +4,7 @@ namespace Ianf.Global360ToDo.Services;
 
 public interface IToDoService
 {
-    public Task<ToDoId> AddToDoItem(NewToDo newToDo);
-    public Task<ToDoId> RemoveToDoItem(ToDoId toDoId);
+    public Task<int> AddToDoItem(NewToDo newToDo);
+    public Task<int> RemoveToDoItem(int toDoId);
     public Task<List<ToDo>> GetToDoItems();
 }

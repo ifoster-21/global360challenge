@@ -5,7 +5,7 @@ namespace Ianf.Global360ToDo.Domain;
 public readonly record struct ToDo
 {
     public ToDo() { }
-    public ToDoId Id { get; init; } = new ToDoId(1);
+    public int Id { get; init; } = 0;
     public string Title { get; init; } = string.Empty;
     public string Contents { get; init; } = string.Empty;
     public Priority Priority { get; init; } = Priority.Medium;

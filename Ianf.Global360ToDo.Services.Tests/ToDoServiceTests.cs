@@ -59,13 +59,13 @@ public class ToDoServiceTests
         };
         _repositoryMock
             .Setup(r => r.AddToDoItem(It.IsAny<NewToDo>()))
-            .Returns(Task.FromResult(new ToDoId(1)));
+            .Returns(Task.FromResult(1));
 
         // Act
         var result = await _sut.AddToDoItem(newToDo);
 
         // Assert
-        Assert.Equal(new ToDoId(1), result);
+        Assert.Equal(1, result);
     }
 
     /**

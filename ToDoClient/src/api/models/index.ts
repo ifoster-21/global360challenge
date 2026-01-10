@@ -18,15 +18,11 @@ export interface NewToDo {
 export type Priority = number;
 
 export interface ToDo {
-    id?: ToDoId;
+    id?: number | string;
     title?: string;
     contents?: string;
     priority?: Priority;
     completionDate?: Date;
-}
-
-export interface ToDoId {
-    id?: number | string;
 }
 
 /** Request Options for Angular HttpClient requests */

@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ianf.Global360ToDo.Services
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ianf.Global360ToDo.Repositories.Tests", "Ianf.Global360ToDo.Repositories.Tests\Ianf.Global360ToDo.Repositories.Tests.csproj", "{18540F7E-19C2-4947-B63B-838741299432}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ianf.Global360ToDo.Domain.Tests", "Ianf.Global360ToDo.Domain.Tests\Ianf.Global360ToDo.Domain.Tests.csproj", "{1FD0A54C-6C43-4A47-A906-9E2215C58681}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ianf.Global360ToDo.WebAPI", "Ianf.Global360ToDo.WebAPI\Ianf.Global360ToDo.WebAPI.csproj", "{6AB4EB03-2949-4C5F-B660-96D40A614FD1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ianf.Global360ToDo.WebAPI.Tests", "Ianf.Global360ToDo.WebAPI.Tests\Ianf.Global360ToDo.WebAPI.Tests.csproj", "{DB6C6A70-732C-4373-827F-E02A6ADFA534}"

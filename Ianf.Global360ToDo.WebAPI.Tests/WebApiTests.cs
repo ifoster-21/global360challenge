@@ -3,6 +3,7 @@
 using Ianf.Global360ToDo.Domain;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Numerics;
 
 public class WebApiTests
 {
@@ -73,7 +74,7 @@ public class WebApiTests
         return toDoItems;
     }
 
-    private async Task<ToDoId> AddNewToDoItem(string title, string contents)
+    private async Task<int> AddNewToDoItem(string title, string contents)
     {
         // Assemble
         var urlTarget = $"{urlEndpoint}ToDoItems";
@@ -91,17 +92,17 @@ public class WebApiTests
         // Act
         var response = await client.PostAsync(urlTarget, newToDoItemString);
         var result = await response.Content.ReadAsStringAsync();
-        var newToDoId = JsonConvert.DeserializeObject<ToDoId>(result);
+        var newToDoId = int.Parse(result);
 
         // Assert
         response.EnsureSuccessStatusCode();
         return newToDoId;
     }
 
-    private async Task RemoveToDoItem(ToDoId toDoId)
+    private async Task RemoveToDoItem(int toDoId)
     {
         // Assemble
-        var urlTarget = $"{urlEndpoint}ToDoItems/{toDoId.Id}";
+        var urlTarget = $"{urlEndpoint}ToDoItems/{toDoId}";
         using var client = new HttpClient();
         client.BaseAddress = urlEndpoint;
 

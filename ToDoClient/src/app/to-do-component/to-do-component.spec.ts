@@ -9,7 +9,7 @@ describe('ToDoComponent', () => {
   let fixture: ComponentFixture<ToDoComponent>;
   let testDate: Date = new Date(2029, 1, 5, 12, 0, 0);
 
-  const toDo: ToDo = {id: {id:42}, title: "Test Title", contents: "Test Contents", priority: 0, completionDate: testDate };
+  const toDo: ToDo = {id:42, title: "Test Title", contents: "Test Contents", priority: 0, completionDate: testDate };
 
   beforeEach(async () => {
     fixture = TestBed.createComponent(ToDoComponent, {
@@ -52,7 +52,7 @@ describe('ToDoComponent', () => {
 
   it('should handle the event thrown when clicking the "delete" button', () => {
     component.deleteToDo.subscribe((toDo: ToDo) => {
-      expect(toDo.id?.id).toBe(42);
+      expect(toDo.id).toBe(42);
     });
   });
 });
