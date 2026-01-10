@@ -1,5 +1,5 @@
-import { Component, input } from '@angular/core';
-import { ToDo } from '../../api/models';
+import { Component, inject, input } from '@angular/core';
+import { ToDoService } from '../../api';
 
 @Component({
   selector: 'app-to-do-detail-component',
@@ -8,5 +8,5 @@ import { ToDo } from '../../api/models';
   styleUrl: './to-do-detail-component.css',
 })
 export class ToDoDetailComponent {
-  toDo = input.required<ToDo>();
+  private readonly toDoService = inject(ToDoService);
 }
