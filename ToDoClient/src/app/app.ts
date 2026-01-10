@@ -9,7 +9,4 @@ import { Header } from './header/header';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('ToDoClient');
 }
-
-/* https://ng-openapi.dev/getting-started/quick-start */
