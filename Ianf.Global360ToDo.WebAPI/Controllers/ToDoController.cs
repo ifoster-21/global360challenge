@@ -48,17 +48,8 @@ public class ToDoController : ControllerBase
 
     [HttpDelete]
     [Route("/ToDoItems/{toDoId}")]
-    public async Task<IActionResult> RemoveToDoItem(int toDoId)
+    public async Task<List<ToDo>> RemoveToDoItem(int toDoId)
     {
-        _logger.LogInformation($"Called Delete Item with {toDoId}.");
-        try
-        {
-            await _service.RemoveToDoItem(toDoId);
-        }
-        catch (InvalidToDoIdException)
-        {
-            return BadRequest($"Id {toDoId} is not a valid id for a ToDoItem.");
-        }
-        return Ok();
+        return await _service.RemoveToDoItem(toDoId);
     }
 }

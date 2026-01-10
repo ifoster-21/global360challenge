@@ -23,13 +23,13 @@ public class InMemoryToDoRepository : IToDoRepository
 
     public Task<List<ToDo>> GetToDoItems() => Task.FromResult(_todoItems);
 
-    public Task<int> RemoveToDoItem(int toDoId)
+    public Task<List<ToDo>> RemoveToDoItem(int toDoId)
     {
         if (_todoItems.Exists(item => item.Id == toDoId))
         {
             var itemToRemove = _todoItems.First(item => item.Id == toDoId);
             var result = _todoItems.Remove(itemToRemove);
         }
-        return Task.FromResult(toDoId);
+        return Task.FromResult(_todoItems);
     }
 }

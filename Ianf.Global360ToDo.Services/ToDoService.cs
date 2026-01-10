@@ -17,7 +17,7 @@ public class ToDoService(IToDoRepository toDoRepository) : IToDoService
         return await _toDoRepository.AddToDoItem(newToDo);
     }
 
-    public async Task<int> RemoveToDoItem(int toDoId) => await _toDoRepository.RemoveToDoItem(toDoId);
+    public async Task<List<ToDo>> RemoveToDoItem(int toDoId) => await _toDoRepository.RemoveToDoItem(toDoId);
 
     public async Task<List<ToDo>> GetToDoItems() => await _toDoRepository.GetToDoItems();
 }

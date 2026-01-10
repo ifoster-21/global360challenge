@@ -28,7 +28,8 @@ public class WebApiTests
         Assert.Equal(toDoCount + 5, toDoItems.Count);
 
         // Remove one item.
-        await RemoveToDoItem(newToDoId1);
+        var updatedToDoList = await RemoveToDoItem(newToDoId1);
+        Assert.Equal(4, updatedToDoList.Count);
 
         // Get current todo items and confirm only one exists.
         toDoItems = await GetToDoItems();
@@ -67,12 +68,12 @@ public class WebApiTests
         using var client = new HttpClient();
         client.BaseAddress = urlEndpoint;
         var response = await client.GetAsync(urlTarget);
-        response.EnsureSuccessStatusCode();
-        var result = await response.Content.ReadAsStringAsync();
-        var toDoItems = JsonConvert.DeserializeObject<List<ToDo>>(result);
 
         // Assert
+        response.EnsureSuccessStatusCode();
         Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
+        var result = await response.Content.ReadAsStringAsync();
+        var toDoItems = JsonConvert.DeserializeObject<List<ToDo>>(result);
         Assert.NotNull(toDoItems);
         return toDoItems;
     }
@@ -102,7 +103,7 @@ public class WebApiTests
         return newToDoId;
     }
 
-    private async Task RemoveToDoItem(int toDoId)
+    private async Task<List<ToDo>> RemoveToDoItem(int toDoId)
     {
         // Assemble
         var urlTarget = $"{urlEndpoint}ToDoItems/{toDoId}";
@@ -114,5 +115,10 @@ public class WebApiTests
 
         // Assert
         response.EnsureSuccessStatusCode();
+        Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
+        var result = await response.Content.ReadAsStringAsync();
+        var toDoItems = JsonConvert.DeserializeObject<List<ToDo>>(result);
+        Assert.NotNull(toDoItems);
+        return toDoItems;
     }
 }
