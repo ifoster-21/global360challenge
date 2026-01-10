@@ -50,6 +50,7 @@ public class ToDoController : ControllerBase
     [Route("/ToDoItems/{toDoId}")]
     public async Task<IActionResult> RemoveToDoItem(int toDoId)
     {
+        _logger.LogInformation($"Called Delete Item with {toDoId}.");
         try
         {
             await _service.RemoveToDoItem(toDoId);

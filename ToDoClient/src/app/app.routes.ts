@@ -10,12 +10,12 @@ export const routes: Routes = [
     title: 'Home Page',
   },
   {
-    path: 'NewToDo',
+    path: 'AddNewToDo',
     component: AddToDoComponent,
     title: 'Home Page',
   },
   {
-    path: 'ToDo',
+    path: 'DisplayToDo/:toDoId',
     component: ToDoDetailComponent,
     title: 'Home Page',
   }
