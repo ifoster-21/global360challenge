@@ -8,11 +8,6 @@ import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 export class ToDoService {
     // TODO: Put into environment settings.
     BASE_PATH_DEFAULT="http://localhost:5124/"
-    toDoList: ToDo[] = [];
-    selectedToDo: ToDo | undefined = undefined;
-
-    private updateSubject = new BehaviorSubject<boolean>(false);
-    update$ = this.updateSubject.asObservable();
 
     constructor(private http: HttpClient) {
     }
