@@ -1,5 +1,15 @@
-<section class="todo-item">
-    <div class="todo-title" data-testid="todo-title">{{toDo().title}}</div>
-    <div class="todo-contents" data-testid="todo-contents">{{toDo().contents}}</div>
-    <button class="todo-delete" data-testid="todo-delete" (click)="onDelete($event)">Delete To Do Item</button>
-</section>
+<div class="card border-secondary mb-3 form-group">
+    <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-10">
+            <div id="title" class="form-control-plaintext" data-testid="todo-title">{{toDo().title}}</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="contents" class="col-sm-2 col-form-label">Contents</label>
+        <div class="col-sm-10">
+            <div id="contents" class="form-control-plaintext" data-testid="todo-contents">{{toDo().contents}}</div>
+        </div>
+    </div>
+    <button class="btn btn-danger btn-sm" data-testid="todo-delete" (click)="onDelete($event)">Delete To Do Item</button>
+</div>

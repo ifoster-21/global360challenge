@@ -1,14 +1,18 @@
 <div class="container">
     <form class="form" (ngSubmit)="saveNewToDo()">
-        <input class="todo-title-input" name="title" type="text" [(ngModel)]="newToDo.title" placeholder="todo title"/>
-        <input class="todo-contents-input" name="contents" type="text" [(ngModel)]="newToDo.contents" placeholder="todo contents"/>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input class="form-control" name="title" id="title" type="text" [(ngModel)]="newToDo.title" placeholder="todo title"/>
+        </div>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input class="form-control" name="contents" id="contents" type="text" [(ngModel)]="newToDo.contents" placeholder="todo contents"/>
+        </div>
         <div class="buttons">
-            <button type="submit" class="button submit">
-                Save New ToDo
-            </button>
+            <div class="btn-group">
+                <button (click)="cancelNewToDo()" class="btn btn-warning btn-sm">Cancel New ToDo</button>
+                <button type="submit" class="btn btn-success btn-sm">Save New ToDo</button>
+            </div>
         </div>
     </form>
-    <button (click)="cancelNewToDo()" class="button cancel">
-        Cancel New ToDo 
-    </button>
 </div>

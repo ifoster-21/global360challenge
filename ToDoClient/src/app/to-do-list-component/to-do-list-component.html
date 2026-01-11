@@ -1,6 +1,6 @@
-<section class="todo-list">
+<form class="todo-list justify-content-center">
     @for(toDo of toDoList(); track toDo) {
         <app-to-do-component [toDo]="toDo" (deleteToDo)="handleDelete($event)" />
     }
-    <button class="todo-addnew" (click)="onAddNew($event)">Add New ToDo</button>
-</section>
+    <button class="btn-sm btn btn-success" (click)="onAddNew($event)">Add New ToDo</button>
+</form>
