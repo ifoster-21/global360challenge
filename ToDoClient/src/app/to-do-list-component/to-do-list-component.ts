@@ -33,7 +33,8 @@ export class ToDoListComponent implements OnInit {
   handleDelete(e:any) {
     this.toDoService.deleteToDo(e.id).subscribe({
       next: (result) => {
-        this.toDoList = result as any as ToDo[];
+        console.log(JSON.stringify(result));
+        this.toDoList = this.toDoList.filter((el) => el.id !== e.id);
       },
       error: (e) => console.log(e)
     });
