@@ -9,7 +9,7 @@ dotnet build
 Start-Job -Name "ToDoServer" -ScriptBlock { dotnet run --project ./Ianf.Global360ToDo.WebAPI/Ianf.Global360ToDo.WebAPI.csproj }
 Write-Host "Sleeping for $SleepTime seconds"
 Start-Sleep $SleepTime # Crude, but works for now
-Write-Host "Slept for $SleepTime seconds"
+Write-Host "Slept for $SleepTime seconds to wait for server to start."
 
 # Run api tests
 dotnet test ./Ianf.Global360ToDo.WebAPI.Tests/Ianf.Global360ToDo.WebAPI.Tests.csproj
