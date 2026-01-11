@@ -28,7 +28,7 @@ public class ToDoController : ControllerBase
 
     [HttpPost]
     [Route("/ToDoItems")]
-    public async Task<ActionResult<int>> AddNewToDoItem(NewToDo newToDo)
+    public async Task<ActionResult<long>> AddNewToDoItem(NewToDo newToDo)
     {
         try
         {
@@ -48,7 +48,7 @@ public class ToDoController : ControllerBase
 
     [HttpDelete]
     [Route("/ToDoItems/{toDoId}")]
-    public async Task<List<ToDo>> RemoveToDoItem(int toDoId)
+    public async Task<List<ToDo>> RemoveToDoItem(long toDoId)
     {
         return await _service.RemoveToDoItem(toDoId);
     }

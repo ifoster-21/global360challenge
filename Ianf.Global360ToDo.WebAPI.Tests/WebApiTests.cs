@@ -72,7 +72,7 @@ public class WebApiTests
         return toDoItems;
     }
 
-    private async Task<int> AddNewToDoItem(string title, string contents)
+    private async Task<long> AddNewToDoItem(string title, string contents)
     {
         // Assemble
         var urlTarget = $"{urlEndpoint}ToDoItems";
@@ -88,14 +88,14 @@ public class WebApiTests
         // Act
         var response = await client.PostAsync(urlTarget, newToDoItemString);
         var result = await response.Content.ReadAsStringAsync();
-        var newToDoId = int.Parse(result);
+        var newToDoId = long.Parse(result);
 
         // Assert
         response.EnsureSuccessStatusCode();
         return newToDoId;
     }
 
-    private async Task<List<ToDo>> RemoveToDoItem(int toDoId)
+    private async Task<List<ToDo>> RemoveToDoItem(long toDoId)
     {
         // Assemble
         var urlTarget = $"{urlEndpoint}ToDoItems/{toDoId}";

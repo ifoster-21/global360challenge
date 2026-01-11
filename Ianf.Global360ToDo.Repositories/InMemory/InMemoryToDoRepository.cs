@@ -6,30 +6,30 @@ public class InMemoryToDoRepository : IToDoRepository
 {
     private readonly List<ToDo> _todoItems = [
         new ToDo {
-            Id = 1,
+            Id = DateTime.Now.Ticks,
             Title = "Shopping.",
             Contents = "Shopping to be done for dinner."
         },
         new ToDo {
-            Id = 2,
+            Id = DateTime.Now.Ticks,
             Title = "Workout.",
             Contents = "Gym workout end-of-day."
         },
         new ToDo {
-            Id = 3,
+            Id = DateTime.Now.Ticks,
             Title = "Bills.",
             Contents = "Gas & Electricity need to be paid."
         },
         new ToDo {
-            Id = 4,
+            Id = DateTime.Now.Ticks,
             Title = "Dry Cleaning.",
             Contents = "Pick up dry cleaning."
         }
     ];
 
-    private int GenerateNewToDoId() => _todoItems.Count + 1;
+    private long GenerateNewToDoId() => DateTime.Now.Ticks;
 
-    public Task<int> AddToDoItem(NewToDo newToDo)
+    public Task<long> AddToDoItem(NewToDo newToDo)
     {
         var newToDoId = GenerateNewToDoId();
         _todoItems.Add(new ToDo
@@ -43,7 +43,7 @@ public class InMemoryToDoRepository : IToDoRepository
 
     public Task<List<ToDo>> GetToDoItems() => Task.FromResult(_todoItems);
 
-    public Task<List<ToDo>> RemoveToDoItem(int toDoId)
+    public Task<List<ToDo>> RemoveToDoItem(long toDoId)
     {
         if (_todoItems.Exists(item => item.Id == toDoId))
         {

@@ -1,5 +1,5 @@
 param (
-    [int]$SleepTime = 8
+    [int]$SleepTime = 10 
 )
 
 dotnet clean

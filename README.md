@@ -2,13 +2,16 @@
 
 Code Challenge for Global 360
 
-- To run
-  - Start the web service in Ianf.Global360challenge.WebAPI. dotnet run
-  - Start the angular app.
+# To run tests
 
-- For brevity
-  - avoided CORS or HTTPS interaction. Normally would be handled at Web API layer.
-  - avoided any auth interaction. Normally would be handled at Web API layer.
+- Use script 'run_unit_tests.ps1' to run all local unit tests.
+- Use script 'run_api_tests.ps1' to run all integration API tests.
 
-- More complex than required to demonstrate patterns. In something this small would not:
-  - Test the service layer with a Moq repository as repository is in-memory so no need to mock out an external-process call.
+# To run
+
+- Use script 'run_todo_app.ps1' to run the server and the client angular app.
+
+# For brevity
+
+- avoided HTTPS interaction. Normally would be handled at Web API layer.
+- avoided any auth interaction. Normally would be handled at Web API layer.

@@ -30,7 +30,6 @@ public class InMemoryToDoRepositoryTests
         todoList = await _sut.GetToDoItems();
         Assert.Equal(5, todoList.ToList().Count);
         var todo = todoList.ToList().Last();
-        Assert.Equal(5, todo.Id);
         Assert.Equal(title, todo.Title);
         Assert.Equal(contents, todo.Contents);
     }
