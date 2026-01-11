@@ -13,5 +13,8 @@ Code Challenge for Global 360
 
 # For brevity
 
-- avoided HTTPS interaction. Normally would be handled at Web API layer.
-- avoided any auth interaction. Normally would be handled at Web API layer.
+- Avoided HTTPS interaction. Normally would be handled at Web API layer.
+- Avoided any auth interaction. Normally would be handled at Web API layer.
+- Bare minimal CSS bootstrap styling.
+- Incomplete test coverage for Angular components. Sufficient to demonstrate working success of ng test.
+- Demonstration of Cypress initial test as smoke test, but no extensive happy-path tests.
