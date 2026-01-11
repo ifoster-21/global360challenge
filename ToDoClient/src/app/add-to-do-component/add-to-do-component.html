@@ -1,14 +1,14 @@
 <div class="container">
     <form class="form" (ngSubmit)="saveNewToDo()">
-        <input name="title" type="text" [(ngModel)]="newToDo.title" placeholder="todo title"/>
-        <input name="contents" type="text" [(ngModel)]="newToDo.contents" placeholder="todo contents"/>
+        <input class="todo-title-input" name="title" type="text" [(ngModel)]="newToDo.title" placeholder="todo title"/>
+        <input class="todo-contents-input" name="contents" type="text" [(ngModel)]="newToDo.contents" placeholder="todo contents"/>
         <div class="buttons">
-            <button type="submit" class="button cta">
+            <button type="submit" class="button submit">
                 Save New ToDo
             </button>
         </div>
     </form>
-    <button (click)="cancelNewToDo()" class="button cta">
+    <button (click)="cancelNewToDo()" class="button cancel">
         Cancel New ToDo 
     </button>
 </div>
