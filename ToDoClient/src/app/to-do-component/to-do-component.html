@@ -1,5 +1,5 @@
 <div>
-    <div>{{toDo().title}}</div>
-    <div>{{toDo().contents}}</div>
+    <div data-testid="todo-title">{{toDo().title}}</div>
+    <div data-testid="todo-contents">{{toDo().contents}}</div>
     <button class="todo-delete" data-testid="todo-delete" (click)="onDelete($event)">Delete To Do Item</button>
 </div>
