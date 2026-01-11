@@ -14,28 +14,25 @@ public class InMemoryToDoRepositoryTests
         // Assemble
         var title = "Test ToDo Title";
         var contents = "Contents of todo item.";
-        var priority = Domain.Enums.Priority.High;
 
         var newToDo = new NewToDo
         {
             Title = title,
-            Contents = contents,
-            Priority = priority
+            Contents = contents
         };
         var todoList = await _sut.GetToDoItems();
-        Assert.Empty(todoList.ToList());
+        Assert.Equal(4, todoList.ToList().Count);
 
         // Act
         await _sut.AddToDoItem(newToDo);
 
         // Assert
         todoList = await _sut.GetToDoItems();
-        Assert.Single(todoList.ToList());
-        var todo = todoList.ToList().First();
-        Assert.Equal(1, todo.Id);
+        Assert.Equal(5, todoList.ToList().Count);
+        var todo = todoList.ToList().Last();
+        Assert.Equal(5, todo.Id);
         Assert.Equal(title, todo.Title);
         Assert.Equal(contents, todo.Contents);
-        Assert.Equal(priority, todo.Priority);
     }
 
     [Fact]
@@ -45,20 +42,17 @@ public class InMemoryToDoRepositoryTests
         var newToDo1 = new NewToDo
         {
             Title = "Title 1",
-            Contents = "Contents 1",
-            Priority = Domain.Enums.Priority.High
+            Contents = "Contents 1"
         };
         var newToDo2 = new NewToDo
         {
             Title = "Title 2",
-            Contents = "Contents 2",
-            Priority = Domain.Enums.Priority.Medium
+            Contents = "Contents 2"
         };
         var newToDo3 = new NewToDo
         {
             Title = "Title 3",
-            Contents = "Contents 3",
-            Priority = Domain.Enums.Priority.Low
+            Contents = "Contents 3"
         };
 
         // Act
@@ -68,7 +62,7 @@ public class InMemoryToDoRepositoryTests
 
         // Assert
         var todoList = await _sut.GetToDoItems();
-        Assert.Equal(3, todoList.ToList().Count);
+        Assert.Equal(7, todoList.ToList().Count);
     }
 
     [Fact]
@@ -78,20 +72,17 @@ public class InMemoryToDoRepositoryTests
         var newToDo1 = new NewToDo
         {
             Title = "Title 1",
-            Contents = "Contents 1",
-            Priority = Domain.Enums.Priority.High
+            Contents = "Contents 1"
         };
         var newToDo2 = new NewToDo
         {
             Title = "Title 2",
-            Contents = "Contents 2",
-            Priority = Domain.Enums.Priority.Medium
+            Contents = "Contents 2"
         };
         var newToDo3 = new NewToDo
         {
             Title = "Title 3",
-            Contents = "Contents 3",
-            Priority = Domain.Enums.Priority.Low
+            Contents = "Contents 3"
         };
         await _sut.AddToDoItem(newToDo1);
         var newToDoId = await _sut.AddToDoItem(newToDo2);
@@ -102,30 +93,28 @@ public class InMemoryToDoRepositoryTests
 
         // Assert
         var todoList = await _sut.GetToDoItems();
-        Assert.Equal(2, todoList.ToList().Count);
+        Assert.Equal(6, todoList.ToList().Count);
     }
 
     [Fact]
+
     public async Task TestRemoveToDoWithNonExistentToDoId()
     {
         // Assemble
         var newToDo1 = new NewToDo
         {
             Title = "Title 1",
-            Contents = "Contents 1",
-            Priority = Domain.Enums.Priority.High
+            Contents = "Contents 1"
         };
         var newToDo2 = new NewToDo
         {
             Title = "Title 2",
-            Contents = "Contents 2",
-            Priority = Domain.Enums.Priority.Medium
+            Contents = "Contents 2"
         };
         var newToDo3 = new NewToDo
         {
             Title = "Title 3",
-            Contents = "Contents 3",
-            Priority = Domain.Enums.Priority.Low
+            Contents = "Contents 3"
         };
         await _sut.AddToDoItem(newToDo1);
         await _sut.AddToDoItem(newToDo2);
@@ -138,6 +127,6 @@ public class InMemoryToDoRepositoryTests
 
         // Assert
         var todoList = await _sut.GetToDoItems();
-        Assert.Equal(3, todoList.ToList().Count);
+        Assert.Equal(7, todoList.ToList().Count);
     }
 }

@@ -42,9 +42,7 @@ public class WebApiTests
         var newToDoItem = new NewToDo
         {
             Title = string.Empty,
-            Contents = "Test Contents",
-            Priority = Domain.Enums.Priority.High,
-            CompletionDate = DateTime.Now.AddDays(1)
+            Contents = "Test Contents"
         };
         var newToDoItemString = new StringContent(JsonConvert.SerializeObject(newToDoItem), System.Text.Encoding.UTF8, "application/json");
 
@@ -83,9 +81,7 @@ public class WebApiTests
         var newToDoItem = new NewToDo
         {
             Title = title,
-            Contents = contents,
-            Priority = Domain.Enums.Priority.High,
-            CompletionDate = DateTime.Now.AddDays(1)
+            Contents = contents
         };
         var newToDoItemString = new StringContent(JsonConvert.SerializeObject(newToDoItem), System.Text.Encoding.UTF8, "application/json");
 

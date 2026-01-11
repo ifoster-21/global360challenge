@@ -1,1 +1,16 @@
-<p>add-to-do-component works!</p>
+<div class="container">
+    <form class="form" (ngSubmit)="saveNewToDo()">
+        <input name="title" type="text" [(ngModel)]="newToDo.title" placeholder="todo title"/>
+        <input name="contents" type="text" [(ngModel)]="newToDo.contents" placeholder="todo contents"/>
+        <input name="priority" type="text" [(ngModel)]="newToDo.priority" placeholder="todo priority"/>
+        <input name="completionDate" type="text" [(ngModel)]="newToDo.completionDate" placeholder="todo completionDate"/>
+        <div class="buttons">
+            <button type="submit" class="button cta">
+                Save New ToDo
+            </button>
+        </div>
+    </form>
+    <button (click)="cancelNewToDo()" class="button cta">
+        Cancel New ToDo 
+    </button>
+</div>

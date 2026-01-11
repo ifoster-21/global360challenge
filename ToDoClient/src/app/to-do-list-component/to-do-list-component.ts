@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ToDo } from '../../api/models';
 import { ToDoComponent } from '../to-do-component/to-do-component';
 import { ToDoService } from '../../api/services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-to-do-list-component',
@@ -12,7 +13,7 @@ import { ToDoService } from '../../api/services';
 export class ToDoListComponent implements OnInit {
   toDoList: ToDo[] = [];
 
-  constructor(private toDoService: ToDoService) {
+  constructor(private toDoService: ToDoService, private router: Router) {
   }
 
   ngOnInit() {
@@ -36,5 +37,9 @@ export class ToDoListComponent implements OnInit {
       },
       error: (e) => console.log(e)
     });
+  }
+
+  onAddNew(e:any) {
+    this.router.navigate(['/AddNewToDo']);
   }
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { ToDo } from "../models";
+import { NewToDo, ToDo } from "../models";
 import { Observable } from "rxjs/internal/Observable";
 import { environment } from '../../environments/environment';
 
@@ -14,6 +14,10 @@ export class ToDoService {
     getToDoList(): Observable<ToDo[]> {
         return this.http.get<ToDo[]>(`${this.apiUrl}ToDoItems`);
     };
+
+    addNewToDo(newToDo: NewToDo): Observable<Object> {
+        return this.http.post(`${this.apiUrl}ToDoItems`, newToDo);
+    }
 
     deleteToDo(toDoId: number): Observable<Object> {
         return this.http.delete(`${this.apiUrl}ToDoItems/${toDoId}`);

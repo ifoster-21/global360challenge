@@ -22,9 +22,7 @@ public class ToDoServiceTests
         // Assemble
         var newToDo = new NewToDo
         {
-            Contents = "This is valid contents.",
-            Priority = Domain.Enums.Priority.High,
-            CompletionDate = DateTime.Now
+            Contents = "This is valid contents."
         };
 
         // Act - Assert
@@ -37,9 +35,7 @@ public class ToDoServiceTests
         // Assemble
         var newToDo = new NewToDo
         {
-            Title = "This is a valid title",
-            Priority = Domain.Enums.Priority.High,
-            CompletionDate = DateTime.Now
+            Title = "This is a valid title"
         };
 
         // Act - Assert
@@ -53,9 +49,7 @@ public class ToDoServiceTests
         var newToDo = new NewToDo
         {
             Title = "This is a valid title",
-            Contents = "This is valid contents.",
-            Priority = Domain.Enums.Priority.High,
-            CompletionDate = DateTime.Now
+            Contents = "This is valid contents."
         };
         _repositoryMock
             .Setup(r => r.AddToDoItem(It.IsAny<NewToDo>()))
