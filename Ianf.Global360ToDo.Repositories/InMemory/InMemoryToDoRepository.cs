@@ -7,23 +7,23 @@ public class InMemoryToDoRepository : IToDoRepository
     private readonly List<ToDo> _todoItems = [
         new ToDo {
             Id = 1,
-            Title = "",
-            Contents = ""
+            Title = "Shopping.",
+            Contents = "Shopping to be done for dinner."
         },
         new ToDo {
             Id = 2,
-            Title = "",
-            Contents = ""
+            Title = "Workout.",
+            Contents = "Gym workout end-of-day."
         },
         new ToDo {
             Id = 3,
-            Title = "",
-            Contents = ""
+            Title = "Bills.",
+            Contents = "Gas & Electricity need to be paid."
         },
         new ToDo {
             Id = 4,
-            Title = "",
-            Contents = ""
+            Title = "Dry Cleaning.",
+            Contents = "Pick up dry cleaning."
         }
     ];
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NewToDo, Priority } from '../../api/models';
+import { NewToDo } from '../../api/models';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToDoService } from '../../api/services/toDo.service';
@@ -11,7 +11,7 @@ import { ToDoService } from '../../api/services/toDo.service';
   styleUrl: './add-to-do-component.css',
 })
 export class AddToDoComponent {
-  newToDo: NewToDo = {title: '', contents: '', priority: Priority.Low, completionDate: new Date()};
+  newToDo: NewToDo = {title: '', contents: ''};
 
   constructor(private toDoService: ToDoService, private router: Router){
     

@@ -11,22 +11,12 @@ import { HttpContext, HttpHeaders } from "@angular/common/http";
 export interface NewToDo {
     title?: string;
     contents?: string;
-    priority?: Priority;
-    completionDate?: Date;
-}
-
-export enum Priority {
-    Low = 0,
-    Medium = 1,
-    High = 2
 }
 
 export interface ToDo {
     id?: number | string;
     title?: string;
     contents?: string;
-    priority?: Priority;
-    completionDate?: Date;
 }
 
 /** Request Options for Angular HttpClient requests */

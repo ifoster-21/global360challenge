@@ -4,7 +4,7 @@ import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-to-do-component',
-  imports: [DatePipe],
+  imports: [],
   templateUrl: './to-do-component.html',
   styleUrl: './to-do-component.css',
 })

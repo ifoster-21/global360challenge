@@ -1,7 +1,5 @@
 <div>
     <div>{{toDo().title}}</div>
-    <div>{{toDo().priority}}</div>
     <div>{{toDo().contents}}</div>
-    <div>{{toDo().completionDate | date:'longDate'}}</div>
     <button class="todo-delete" data-testid="todo-delete" (click)="onDelete($event)">Delete To Do Item</button>
 </div>
