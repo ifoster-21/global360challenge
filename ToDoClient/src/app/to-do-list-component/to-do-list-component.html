@@ -1,4 +1,8 @@
-<form class="todo-list justify-content-center">
+<form class="container">
+    <div class="row">
+        <label for="title" class="col-2 col-form-label">Title</label>
+        <label for="contents" class="col-2 col-form-label">Contents</label>
+    </div>
     @for(toDo of toDoList(); track toDo) {
         <app-to-do-component [toDo]="toDo" (deleteToDo)="handleDelete($event)" />
     }

@@ -1,15 +1,11 @@
-<div class="card border-secondary mb-3 form-group">
-    <div class="form-group row">
-        <label for="title" class="col-sm-2 col-form-label">Title</label>
-        <div class="col-sm-10">
-            <div id="title" class="form-control-plaintext" data-testid="todo-title">{{toDo().title}}</div>
-        </div>
+<div class="row justify-content-left">
+    <div class="col-2">
+        <div id="title" class="form-control-plaintext" data-testid="todo-title">{{toDo().title}}</div>
     </div>
-    <div class="form-group row">
-        <label for="contents" class="col-sm-2 col-form-label">Contents</label>
-        <div class="col-sm-10">
-            <div id="contents" class="form-control-plaintext" data-testid="todo-contents">{{toDo().contents}}</div>
-        </div>
+    <div class="col">
+        <div id="contents" class="form-control-plaintext" data-testid="todo-contents">{{toDo().contents}}</div>
     </div>
-    <button class="btn btn-danger btn-sm" data-testid="todo-delete" (click)="onDelete($event)">Delete To Do Item</button>
+    <div class="col">
+        <button class="btn btn-danger btn-sm" data-testid="todo-delete" (click)="onDelete($event)"><i class="bi bi-trash"></i></button>
+    </div>
 </div>
