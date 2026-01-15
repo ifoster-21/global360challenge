@@ -23,19 +23,21 @@ export class ToDoListComponent implements OnInit {
 
   loadData() {
     this.toDoService.getToDoList().subscribe({
-      next: (results) => {
-        this.toDoList.update(() => { return results; });
+      next: (result) => {
+        this.toDoList.set(result);
       },
-      error: (e) => console.error(e)
+      error: (e) => console.error(e),
+      complete: () => console.log('completed')
     });
   }
 
   handleDelete(e:any) {
     this.toDoService.deleteToDo(e.id).subscribe({
       next: (result) => {
-        this.toDoList.update(() => { return result as any as ToDo[];});
+        this.toDoList.set(result);
       },
-      error: (e) => console.log(e)
+      error: (e) => console.log(e),
+      complete: () => console.log('completed')
     });
   }
 

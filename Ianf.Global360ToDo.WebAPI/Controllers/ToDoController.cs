@@ -10,13 +10,12 @@ namespace Ianf.Global360ToDo.WebAPI.Controllers;
 public class ToDoController : ControllerBase
 {
     private readonly IToDoService _service;
-    private readonly ILogger<ToDoService> _logger;
+    private readonly ILogger<ToDoController> _logger;
 
-    public ToDoController(IToDoService service, ILogger<ToDoService> logger)
+    public ToDoController(IToDoService service, ILogger<ToDoController> logger)
     {
         _service = service;
         _logger = logger;
-        _logger.LogInformation("ToDoController Started");
     }
 
     [HttpGet]

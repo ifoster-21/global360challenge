@@ -15,11 +15,11 @@ export class ToDoService {
         return this.http.get<ToDo[]>(`${this.apiUrl}ToDoItems`);
     };
 
-    addNewToDo(newToDo: NewToDo): Observable<Object> {
+    addNewToDo(newToDo: NewToDo): Observable<ToDo> {
         return this.http.post(`${this.apiUrl}ToDoItems`, newToDo);
     }
 
-    deleteToDo(toDoId: number): Observable<Object> {
-        return this.http.delete(`${this.apiUrl}ToDoItems/${toDoId}`);
+    deleteToDo(toDoId: number): Observable<ToDo[]> {
+        return this.http.delete<ToDo[]>(`${this.apiUrl}ToDoItems/${toDoId}`);
     };
 }
