@@ -37,3 +37,4 @@ Code Challenge for Global 360
 ## Known bugs
 
 - On initial page load, 'Delete To Do Item' button does not remove the ToDo from the viewable list until a page refresh is done. Page refresh can be done via browser, or via 'Add New ToDo' and returning to the main page.
+  - Bug fix for above. 'e.preventDefault();' is used to prevent the default behaviour of the 'click' event on the 'delete' button. This default behaviour causes the containing component to re-draw, and this drops the subscription of the 'next': callback handler on the delete event so the update returned from the delete call is not applied as the function is lost.
