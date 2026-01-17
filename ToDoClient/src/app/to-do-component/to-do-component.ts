@@ -13,7 +13,7 @@ export class ToDoComponent {
   deleteToDo = output<ToDo>();
 
   onDelete(e:any) {
-    e.stopPropagation();
+    e.preventDefault(); // Prevent containing component from redrawing. The re-draw loses the callback event subscription to refresh the UI todo list.
     this.deleteToDo.emit(this.toDo());
   }
 }

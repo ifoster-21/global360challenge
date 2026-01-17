@@ -27,7 +27,6 @@ export class ToDoListComponent implements OnInit {
         this.toDoList.set(result);
       },
       error: (e) => console.error(e),
-      complete: () => console.log('completed')
     });
   }
 
@@ -37,7 +36,6 @@ export class ToDoListComponent implements OnInit {
         this.toDoList.set(result);
       },
       error: (e) => console.log(e),
-      complete: () => console.log('completed')
     });
   }
 
