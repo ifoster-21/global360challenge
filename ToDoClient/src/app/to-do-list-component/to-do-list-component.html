@@ -6,5 +6,5 @@
     @for(toDo of toDoList(); track toDo) {
         <app-to-do-component [toDo]="toDo" (deleteToDo)="handleDelete($event)" />
     }
-    <button class="btn-sm btn btn-success" (click)="onAddNew($event)">Add New ToDo</button>
+    <button data-testid="add-new-to-do" class="btn-sm btn btn-success" (click)="onAddNew($event)">Add New ToDo</button>
 </form>

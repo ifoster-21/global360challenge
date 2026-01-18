@@ -12,9 +12,8 @@ import { Router } from '@angular/router';
 })
 export class ToDoListComponent implements OnInit {
   toDoList = signal<ToDo[]>([]);
-
-  constructor(private toDoService: ToDoService, private router: Router) {
-  }
+  private toDoService = inject(ToDoService);
+  private router = inject(Router);
 
   ngOnInit() {
     // TODO: Error handling pattern
